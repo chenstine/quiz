@@ -26,6 +26,7 @@ typedef struct __TREENODE {
 void flatten(TreeNode *root)
 {
 	TreeNode *temp;
+	if (root == NULL) return;
 
 	if (root->left != NULL || root->right != NULL) {
 		if (root->right != NULL) {
@@ -103,8 +104,11 @@ int main()
 {
     struct timespec start, end;
 
-	TreeNode *root = (TreeNode *) malloc(sizeof(TreeNode));
+	TreeNode *root = NULL;
 	root = creatTree(root);
+
+	/* assert - bounds checking */
+	assert(root != NULL &&	"Root is null!");
 
     /* compute the execution time */
     clock_gettime(CLOCK_REALTIME, &start);
